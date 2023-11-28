@@ -15,8 +15,8 @@
 typedef struct Calorias
 {
 	char calInstante[N];
-	int calMinAd;
-	int calMaxPer;
+	char calMinAd[N];
+	char calMaxPer[N];
 } Calorias;
 
 /// <summary>
@@ -25,9 +25,11 @@ typedef struct Calorias
 /// </summary>
 typedef struct Alimentacao
 {
+	int id;
 	char tipoRefeicao[N];
 	char alimento[N];
 	char data[N];
+	//struct Calorias cal[N]; // Apenas para teste
 	struct Calorias cal;
 } Alimentacao;
 
@@ -41,7 +43,8 @@ typedef struct Paciente
 {
 	int id;
 	char nome[N];
-	int telefone;
+	char telefone[N];
+	//struct Alimentacao ali[N]; // Apenas para teste
 	struct Alimentacao ali;
 } Paciente;
 

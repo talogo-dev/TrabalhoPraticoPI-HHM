@@ -12,15 +12,9 @@
 
 #include "Structs.h"
 
-// Criação de Ficheiros
-//void criarFicheiroDadosPacientes();
-//void criarFicheiroCaloriaDia();
-//void criarFicheiroCalAdmissiveis();
-
 // Outros Métodos
 int contarLinhas(FILE* fp);
 
-// Guarda de Dados
-int GuardarDadosPacientes(Paciente p[], int tam);
-int GuardarDadosCaloriaDia(Paciente p[], int tam);
-
+// Ler de Dados
+int LerDadosPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes);
+int LerAlimentacaoPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes);

@@ -10,8 +10,10 @@
 #include <stdio.h>
 #include <locale.h>
 
-#include "Metodos.h";
+#include "Metodos.h"
 #include "Structs.h"
+
+#define K 10
 
 #pragma warning (disable: 4996)
 
@@ -19,20 +21,13 @@ int main()
 {
 	setlocale(LC_ALL, "Portuguese");
 
-	Paciente p[4];
-	int res1 = 0, res2 = 0;
+	Paciente p[K];
+	int qtdDadosPaciente = 0, qtdAlimentacao = 0;
 	
-	res1 = GuardarDadosPacientes(p,3);
-	res2 = GuardarDadosCaloriaDia(p,4);
-	
-	if (res1 == 1) 
-	{
-		printf("Dados Guardados - Dados Pacientes\n");
-	}
+	qtdDadosPaciente = LerDadosPacientes("DadosPacientes.txt", p, K);
+	qtdAlimentacao = LerAlimentacaoPacientes("Alimentacao.txt", p, K);
 
-	if (res2 == 1)
-	{
-		printf("Dados Guardados - Dados Caloria Dia\n");
-	}
+	printf("Numero de Dados de Pacientes: %d\n", qtdDadosPaciente);
+	printf("%d", qtdAlimentacao);
 
 }

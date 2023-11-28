@@ -17,53 +17,6 @@
 
 #pragma warning (disable: 4996)
 
-/*/// <summary>
-/// Um procedimento para criar o Ficheiro "DadosPacientes.txt"
-/// </summary>
-void criarFicheiroDadosPacientes()
-{
-	FILE* fp;
-
-	fp = fopen("DadosPacientes.txt", "w");
-
-	fprintf(fp,
-		"0001;Paulo;123456789\n0003;Maria;96543210\n0002;João;123321123"
-	);
-
-	fclose(fp);
-}
-
-/// <summary>
-/// Um procedimento para criar o Ficheiro "CaloriaDia.txt"
-/// </summary>
-void criarFicheiroCaloriaDia()
-{
-	FILE* fp;
-
-	fp = fopen("CaloriaDia.txt", "w");
-
-	fprintf(fp, 
-		"0001;01-01-2023;pequeno almoço;pão;60 cal\n0003;14 - 02 - 2023;almoço; sopa;120 cal\n0002;23 - 05 - 2023;jantar;prato de carne;1200 cal\n0001;01 - 01 - 2023;pequeno almoço;banana;120 cal"
-	);
-
-	fclose(fp);
-}
-
-/// <summary>
-/// Um procedimento para criar o Ficheiro "CaloriaAdmissivel.txt"
-/// </summary>
-void criarFicheiroCalAdmissiveis()
-{
-	FILE* fp;
-
-	fp = fopen("CaloriaAdmissivel.txt", "w");
-
-	fprintf(fp, 
-		"0001;01-01-2023;pequeno almoço;300 Cal, 400 Cal\n0001;01 - 01 - 2023;jantar;500 Cal, 600 Cal\n0003;21 - 03 - 2023;almoço;500 Cal, 600 Cal"
-	);
-
-	fclose(fp);
-}*/
 // Esta a dar problema com o Main
 int contarLinhas(FILE* fp)
 {
@@ -82,98 +35,64 @@ int contarLinhas(FILE* fp)
 	return cont;
 }
 
-int GuardarDadosPacientes(Paciente p[], int tam)
+/// <summary>
+/// Função para ler os Dados de um ficheiro csv (neste caso o ficheiro "DadosPacientes.csv")
+/// </summary>
+/// <param name="p"></param>
+/// <param name="tam"></param>
+/// <returns>Int quantidade de dados guardados</returns>
+
+int LerDadosPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes)
 {
-	FILE* fpDadosPacientes, * fpDadosPacientesSaved;
-	int contLinhas = 0;
-	char buffer[100];
+	FILE* fp;
+	int i = 0;
 
-	fpDadosPacientes = fopen("DadosPacientes.txt", "r");
-
-	if (fpDadosPacientes == NULL)
+	fp = fopen(nomeFicheiro, "r");
+	if (fp == NULL)
+		return -1;
+	
+	while (1)
 	{
-		printf("ERRO AO ABRIR O FICHEIRO!!"); return 0;
+		fscanf(fp,"%d;%[^;];%s",
+			&p[i].id, p[i].nome, p[i].telefone); 
+		i++;
+		if (feof(fp)) break;
 	}
-	else
-	{
-		int i = 0;
-		while (i < tam)
-		{
-			fscanf(fpDadosPacientes, "%d;%[^;];%d", &p[i].id, p[i].nome, &p[i].telefone); i++;
-		}
-
-	}
-	/*int i = 0;
-	while (i < 3)
-	{
-		printf("\nID: %d,Nome: %s,  Telefone %d", p[i].id, p[i].nome, p[i].telefone); i++;
-	}*/
-
-	// Verificar se nao existe nenhum ficheiro binario que ja tenhas as informações dos Pacientes
-	fpDadosPacientesSaved = fopen("DadosPacientes1.bin", "wb");
-
-	if (fpDadosPacientesSaved == NULL || fpDadosPacientes == NULL)
-	{
-		printf("Erro na abertura de algum dos Ficheiros"); return 0;
-	}
-	else
-	{	// Tou com problemas na parte de guardar em binario
-		fwrite(p, sizeof(p), 1, fpDadosPacientesSaved);
-	}
-
-	//fseek(fpDadosPacientesSaved, 0, SEEK_SET);
-	//fread(buffer, sizeof(p) + 1, tam, fpDadosPacientesSaved);
-	//printf("P: %s\n", buffer);
-
-	fclose(fpDadosPacientes);
-	fclose(fpDadosPacientesSaved);
-	return 1;
+	fclose(fp);
+	return i;
 }
 
-int GuardarDadosCaloriaDia(Paciente p[], int tam)
+/// <summary>
+/// Função para ler os Dados de um ficheiro csv (neste caso o ficheiro "CaloriaDia.csv")
+/// </summary>
+/// <param name="p"></param>
+/// <param name="tam"></param>
+/// <returns>Int quantidade de dados guardados</returns>
+
+// a dar erro ao ler
+int LerAlimentacaoPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes)
 {
-	FILE *fpDadosCalDia;
-
-	fpDadosCalDia = fopen("CaloriaDia.txt", "r");
-
-	if (fpDadosCalDia == NULL)
-	{
-		printf("ERRO AO ABRIR O FICHEIRO!!"); return 0;
-	}
-	else
-	{
-		int i = 0;
-		while (i < tam)
-		{
-			// Nao ta a ler tudo
-			fscanf(fpDadosCalDia, "%d;%[^;];%[^;];%[^;];%[^;]", 
-				&p[i].id, p[i].ali.data, p[i].ali.tipoRefeicao,p[i].ali.alimento, p[i].ali.cal.calInstante); i++;
-		}
-
-	}
+	FILE *fpAlPa;
 	int i = 0;
-	while (i < tam)
+
+	fpAlPa = fopen(nomeFicheiro, "r");
+	if (fpAlPa == NULL)
+		return -1;
+
+	while (1)
 	{
-		printf("\n\nID: %d\nData: %s\nTipo Refeicao %s\nAlimento: %s\nCaloria: %s", p[i].id, p[i].ali.data, p[i].ali.tipoRefeicao, p[i].ali.alimento, p[i].ali.cal.calInstante); i++;
+
+		fscanf(fpAlPa, "%d;%[^;];%[^;];%[^;];%s",
+					&p[i].id, //int
+					p[i].ali.data, //char
+					p[i].ali.tipoRefeicao, //char
+					p[i].ali.alimento, //char
+					p[i].ali.cal.calInstante //char
+			  );
+
+		i++;
+		if(feof(fpAlPa)) break;
 	}
-
-	// Verificar se nao existe nenhum ficheiro binario que ja tenhas as informações dos Pacientes
-	//fpDadosPacientesSaved = fopen("DadosPacientes1.bin", "wb");
-
-	//if (fpDadosPacientesSaved == NULL || fpDadosPacientes == NULL)
-	//{
-	//	printf("Erro na abertura de algum dos Ficheiros"); return 0;
-	//}
-	//else
-	//{	// Tou com problemas na parte de guardar em binario
-	//	fwrite(p, sizeof(p), 1, fpDadosPacientesSaved);
-	//}
-
-	//fseek(fpDadosPacientesSaved, 0, SEEK_SET);
-	//fread(buffer, sizeof(p) + 1, tam, fpDadosPacientesSaved);
-	//printf("P: %s\n", buffer);
-
-	fclose(fpDadosCalDia);
-	//fclose(fpDadosCalDiaSaved);
-	return 1;
+	fclose(fpAlPa);
+	return i;
 }
