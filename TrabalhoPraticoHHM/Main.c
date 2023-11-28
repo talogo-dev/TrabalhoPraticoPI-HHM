@@ -24,7 +24,7 @@ int main()
 	Paciente p[K];
 	int qtdDadosPaciente = 0, qtdAlimentacao = 0;
 	
-	qtdDadosPaciente = LerDadosPacientes("DadosPacientes.txt", p, K);
+	qtdDadosPaciente = LerDadosPacientes("Pessoas.csv", p, K);
 	qtdAlimentacao = LerAlimentacaoPacientes("Alimentacao.txt", p, K);
 
 	printf("Numero de Dados de Pacientes: %d\n", qtdDadosPaciente);

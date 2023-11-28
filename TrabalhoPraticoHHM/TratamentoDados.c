@@ -55,8 +55,8 @@ int LerDadosPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes)
 	{
 		fscanf(fp,"%d;%[^;];%s",
 			&p[i].id, p[i].nome, p[i].telefone); 
-		i++;
 		if (feof(fp)) break;
+		i++;
 	}
 	fclose(fp);
 	return i;
