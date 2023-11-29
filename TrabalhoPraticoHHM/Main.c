@@ -1,10 +1,10 @@
 /*
 * Autores:
 *	- Marco Cardoso / 27969 / a27969@alunos.ipca.pt
-*	- Hugo Especial /		/ 
+*	- Hugo Especial / 27963 / a27963@aulunos.ipca.pt
 *	- Hugo Pereira  /		/
 * Data: 26/11/2023
-* Versão: 1.2 (Ultima vez modificado em 26/11/2023)
+* Versão: 1.2 (Ultima vez modificado em 29/11/2023)
 */
 
 #include <stdio.h>
@@ -29,6 +29,7 @@ int main()
 	qtdAlimentacao = LerAlimentacaoPacientes("Alimentacao.csv", ali, K);
 
 	printf("Numero de Dados de Pacientes: %d\n", qtdDadosPaciente);
-	printf("%d", qtdAlimentacao);
+
+	printf("Numero de Alimentos dos Pacientes: %d\n\n", qtdAlimentacao);
 
 }

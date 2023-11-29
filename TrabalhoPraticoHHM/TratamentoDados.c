@@ -1,10 +1,10 @@
 /*
 * Autores:
 *	- Marco Cardoso / 27969 / a27969@alunos.ipca.pt
-*	- Hugo Especial /		/
+*	- Hugo Especial / 27963 / a27963@aulunos.ipca.pt
 *	- Hugo Pereira  /		/
 * Data: 26/11/2023
-* Versão: 1.5 (Ultima vez modificado em 26/11/2023)
+* Versão: 1.5 (Ultima vez modificado em 29/11/2023)
 * 
 * 
 * NOTA: Contem erros e algumas partes não funcionam
@@ -63,13 +63,14 @@ int LerDadosPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes)
 }
 
 /// <summary>
-/// Função para ler os Dados de um ficheiro csv (neste caso o ficheiro "CaloriaDia.csv")
+/// Função para ler os Dados de um ficheiro csv (neste caso o ficheiro "Alimentacao.csv")
 /// </summary>
 /// <param name="p"></param>
 /// <param name="tam"></param>
 /// <returns>Int quantidade de dados guardados</returns>
 
 // a dar erro ao ler 
+// JA NAO DA ERRO O BINÃO RESOLVEU
 
 int LerAlimentacaoPacientes(char nomeFicheiro[], Alimentacao ali[], int maxPacientes)
 {
@@ -82,17 +83,10 @@ int LerAlimentacaoPacientes(char nomeFicheiro[], Alimentacao ali[], int maxPacie
 
 	while (1)
 	{
-		fscanf(fpAlPa, "%d;%[^;];%[^;];%[^;];%s",
-			&ali[i].id, //int
-			ali[i].alimento, //char
-			ali[i].tipoRefeicao, //char
-			ali[i].alimento, //char
-			ali[i].cal
-			//p[i].ali.cal.calInstante //char
-		);
-
-		i++;
+		fscanf(fpAlPa, "%d;%[^;];%[^;];%[^;];%s", &ali[i].id, ali[i].data, ali[i].tipoRefeicao, ali[i].alimento, ali[i].cal);
+		
 		if (feof(fpAlPa)) break;
+		i++;
 	}
 	fclose(fpAlPa);
 	return i;

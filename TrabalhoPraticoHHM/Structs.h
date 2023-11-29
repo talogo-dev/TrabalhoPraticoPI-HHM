@@ -1,10 +1,10 @@
 /*
 * Autores:
 *	- Marco Cardoso / 27969 / a27969@alunos.ipca.pt
-*	- Hugo Especial /		/
+*	- Hugo Especial / 27963 / a27963@aulunos.ipca.pt
 *	- Hugo Pereira  /		/
 * Data: 20/11/2023
-* Versão: 1.0 (Ultima vez modificado em 20/11/2023)
+* Versão: 1.0 (Ultima vez modificado em 29/11/2023)
 */
 
 #pragma once
@@ -26,10 +26,11 @@ typedef struct Calorias
 typedef struct Alimentacao
 {
 	int id;
+	char data[N];
 	char tipoRefeicao[N];
 	char alimento[N];
-	char data[N];
 	char cal[N];
+
 	//struct Calorias cal[N]; // Apenas para teste
 	//struct Calorias cal; 
 } Alimentacao;
