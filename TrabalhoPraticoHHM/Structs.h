@@ -12,12 +12,23 @@
 
 #define N 30
 
-typedef struct Calorias
+// Falar com Rei VSKI (Marco)
+/*typedef struct Calorias
 {
 	char calInstante[N];
 	char calMinAd[N];
 	char calMaxPer[N];
-} Calorias;
+} Calorias;*/
+
+/// <summary>
+///		Estrutura para guardar as Dietas
+/// </summary>
+typedef struct Dieta {
+	int id;
+	char data[N];
+	char tipoRefeicao[N];
+	char cal[N];
+}Dieta;
 
 /// <summary>
 /// Estrutura para guardar:

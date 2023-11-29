@@ -55,6 +55,7 @@ int LerDadosPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes)
 	{
 		fscanf(fp,"%d;%[^;];%s",
 			&p[i].id, p[i].nome, p[i].telefone); 
+		
 		if (feof(fp)) break;
 		i++;
 	}
@@ -84,9 +85,38 @@ int LerAlimentacaoPacientes(char nomeFicheiro[], Alimentacao ali[], int maxPacie
 	while (1)
 	{
 		fscanf(fpAlPa, "%d;%[^;];%[^;];%[^;];%s", &ali[i].id, ali[i].data, ali[i].tipoRefeicao, ali[i].alimento, ali[i].cal);
-		
+
 		if (feof(fpAlPa)) break;
 		i++;
+	}
+	fclose(fpAlPa);
+	return i;
+}
+
+
+/// <summary>
+/// Função para ler os Dados de um ficheiro csv (neste caso o ficheiro "Dieta.csv")
+/// </summary>
+/// <param name="nomeFicheiro"></param>
+/// <param name="ali"></param>
+/// <param name="maxPacientes"></param>
+/// <returns>quantidade de dietas i</returns>
+int LerDietaPacientes(char nomeFicheiro[], Dieta diet[], int maxPacientes)
+{
+	FILE* fpAlPa;
+	int i = 0;
+
+	fpAlPa = fopen(nomeFicheiro, "r");
+	if (fpAlPa == NULL)
+		return -1;
+
+	while (1)
+	{
+		fscanf(fpAlPa, "%d;%[^;];%[^;];%s", &diet[i].id, diet[i].data, diet[i].tipoRefeicao, diet[i].cal);
+
+		i++;
+		if (feof(fpAlPa)) break;
+		
 	}
 	fclose(fpAlPa);
 	return i;

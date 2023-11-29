@@ -23,13 +23,18 @@ int main()
 
 	Paciente p[K];
 	Alimentacao ali[K];
-	int qtdDadosPaciente = 0, qtdAlimentacao = 0;
+	Dieta diet[K];
+
+	int qtdDadosPaciente = 0, qtdAlimentacao = 0, qtdDieta = 0;
 	
 	qtdDadosPaciente = LerDadosPacientes("Pessoas.csv", p, K);
 	qtdAlimentacao = LerAlimentacaoPacientes("Alimentacao.csv", ali, K);
+	qtdDieta = LerDietaPacientes("Dieta.csv", diet, K);
 
-	printf("Numero de Dados de Pacientes: %d\n", qtdDadosPaciente);
+	printf("Número de Dados de Pacientes: %d\n", qtdDadosPaciente);
 
-	printf("Numero de Alimentos dos Pacientes: %d\n\n", qtdAlimentacao);
+	printf("Número de Alimentos dos Pacientes: %d\n", qtdAlimentacao);
+
+	printf("Número de Dietas dos Pacientes: %d\n\n", qtdDieta);
 
 }

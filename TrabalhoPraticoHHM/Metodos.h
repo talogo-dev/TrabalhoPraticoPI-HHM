@@ -18,3 +18,4 @@ int contarLinhas(FILE* fp);
 // Ler de Dados
 int LerDadosPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes);
 int LerAlimentacaoPacientes(char nomeFicheiro[], Alimentacao ali[], int maxPacientes);
+int LerDietaPacientes(char nomeFicheiro[], Dieta diet[], int maxPacientes);
