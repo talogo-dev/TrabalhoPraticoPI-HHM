@@ -69,10 +69,11 @@ int LerDadosPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes)
 /// <param name="tam"></param>
 /// <returns>Int quantidade de dados guardados</returns>
 
-// a dar erro ao ler
-int LerAlimentacaoPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes)
+// a dar erro ao ler 
+
+int LerAlimentacaoPacientes(char nomeFicheiro[], Alimentacao ali[], int maxPacientes)
 {
-	FILE *fpAlPa;
+	FILE* fpAlPa;
 	int i = 0;
 
 	fpAlPa = fopen(nomeFicheiro, "r");
@@ -81,18 +82,21 @@ int LerAlimentacaoPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes)
 
 	while (1)
 	{
-
 		fscanf(fpAlPa, "%d;%[^;];%[^;];%[^;];%s",
-					&p[i].id, //int
-					p[i].ali.data, //char
-					p[i].ali.tipoRefeicao, //char
-					p[i].ali.alimento, //char
-					p[i].ali.cal.calInstante //char
-			  );
+			&ali[i].id, //int
+			ali[i].alimento, //char
+			ali[i].tipoRefeicao, //char
+			ali[i].alimento, //char
+			ali[i].cal
+			//p[i].ali.cal.calInstante //char
+		);
 
 		i++;
-		if(feof(fpAlPa)) break;
+		if (feof(fpAlPa)) break;
 	}
 	fclose(fpAlPa);
 	return i;
 }
+
+
+

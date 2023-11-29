@@ -19,13 +19,14 @@
 
 int main()
 {
-	setlocale(LC_ALL, "Portuguese");
+	setlocale(LC_ALL, "Portuguese"); 
 
 	Paciente p[K];
+	Alimentacao ali[K];
 	int qtdDadosPaciente = 0, qtdAlimentacao = 0;
 	
 	qtdDadosPaciente = LerDadosPacientes("Pessoas.csv", p, K);
-	qtdAlimentacao = LerAlimentacaoPacientes("Alimentacao.txt", p, K);
+	qtdAlimentacao = LerAlimentacaoPacientes("Alimentacao.csv", ali, K);
 
 	printf("Numero de Dados de Pacientes: %d\n", qtdDadosPaciente);
 	printf("%d", qtdAlimentacao);

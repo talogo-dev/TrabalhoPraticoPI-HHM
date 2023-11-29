@@ -29,8 +29,9 @@ typedef struct Alimentacao
 	char tipoRefeicao[N];
 	char alimento[N];
 	char data[N];
+	char cal[N];
 	//struct Calorias cal[N]; // Apenas para teste
-	struct Calorias cal;
+	//struct Calorias cal; 
 } Alimentacao;
 
 /// <summary>
@@ -44,8 +45,9 @@ typedef struct Paciente
 	int id;
 	char nome[N];
 	char telefone[N];
+	char alimentacao[N];
 	//struct Alimentacao ali[N]; // Apenas para teste
-	struct Alimentacao ali;
+	//struct Alimentacao ali;
 } Paciente;
 
 
