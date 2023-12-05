@@ -1,8 +1,8 @@
 /*
 * Autores:
-*	- Marco Cardoso / 27969 / a27969@alunos.ipca.pt
 *	- Hugo Especial / 27963 / a27963@aulunos.ipca.pt
-*	- Hugo Pereira  /		/
+*	- Marco Cardoso / 27969 / a27969@alunos.ipca.pt
+*	- Hugo Pereira  / 27970 / a27970@alunos.ipca.pt
 * Data: 26/11/2023
 * Versão: 1.2 (Ultima vez modificado em 29/11/2023)
 */
@@ -27,9 +27,9 @@ int main()
 
 	int qtdDadosPaciente = 0, qtdAlimentacao = 0, qtdDieta = 0;
 	
-	qtdDadosPaciente = LerDadosPacientes("Pessoas.csv", p, K);
-	qtdAlimentacao = LerAlimentacaoPacientes("Alimentacao.csv", ali, K);
-	qtdDieta = LerDietaPacientes("Dieta.csv", diet, K);
+	qtdDadosPaciente = importaDadosPacientes("Pessoas.csv", p, K);
+	qtdAlimentacao = importaAlimentacaoPacientes("Alimentacao.csv", ali, K);
+	qtdDieta = importaDietaPacientes("Dieta.csv", diet, K);
 
 	printf("Número de Dados de Pacientes: %d\n", qtdDadosPaciente);
 
