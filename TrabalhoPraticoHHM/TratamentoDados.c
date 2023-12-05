@@ -13,6 +13,7 @@
 */
 
 #include <stdio.h>
+#include <stdbool.h>
 #include "Structs.h"
 
 #pragma warning (disable: 4996)
@@ -43,7 +44,7 @@ int contarLinhas(FILE* fp)
 /// <param name="tam"></param>
 /// <returns>Int quantidade de dados guardados</returns>
 
-int importaDadosPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes)
+int importarDadosPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes)
 {
 	FILE* fp;
 	int i = 0;
@@ -55,7 +56,10 @@ int importaDadosPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes)
 	while (1)
 	{
 		fscanf(fp,"%d;%[^;];%s",
-			&p[i].id, p[i].nome, p[i].telefone); 
+			&p[i].id, 
+			p[i].nome, 
+			p[i].telefone
+		); 
 		
 		if (feof(fp)) break;
 		i++;
@@ -71,7 +75,7 @@ int importaDadosPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes)
 /// <param name="tam"></param>
 /// <returns>Int quantidade de dados guardados</returns>
 
-int importaAlimentacaoPacientes(char nomeFicheiro[], Alimentacao ali[], int maxPacientes)
+int importarDadosDieta(char nomeFicheiro[], Dieta diet[], int maxPacientes)
 {
 	FILE* fpAlPa;
 	int i = 0;
@@ -82,7 +86,14 @@ int importaAlimentacaoPacientes(char nomeFicheiro[], Alimentacao ali[], int maxP
 
 	while (1)
 	{
-		fscanf(fpAlPa, "%d;%[^;];%[^;];%[^;];%s", &ali[i].id, ali[i].data, ali[i].tipoRefeicao, ali[i].alimento, ali[i].cal);
+		fscanf(fpAlPa, "%d;%[^;];%[^;];%[^;];%s", 
+			&diet[i].id, 
+			diet[i].data, 
+			diet[i].tipoRefeicao, 
+			diet[i].alimento, 
+			diet[i].cal
+		);
+
 		if (feof(fpAlPa)) break;
 		i++;
 	}
@@ -98,7 +109,9 @@ int importaAlimentacaoPacientes(char nomeFicheiro[], Alimentacao ali[], int maxP
 /// <param name="ali"></param>
 /// <param name="maxPacientes"></param>
 /// <returns>quantidade de dietas i</returns>
-int importaDietaPacientes(char nomeFicheiro[], Dieta diet[], int maxPacientes)
+/// 
+/// NAO LE AS LINHAS TODAS
+int importarDadosPlano(char nomeFicheiro[], Plano pl[], int maxPacientes)
 {
 	FILE* fpAlPa;
 	int i = 0;
@@ -108,12 +121,14 @@ int importaDietaPacientes(char nomeFicheiro[], Dieta diet[], int maxPacientes)
 	if (fpAlPa == NULL)
 		return -1;
 
-	while (1)
+
+	//Nesta correção, adicionei a verificação i < maxPacientes ao loop while para garantir que a leitura pare quando atingir o número máximo de pacientes 
+	//ou quando não conseguir ler corretamente os dados do arquivo. 
+	//Isso deve garantir que todas as linhas do arquivo sejam lidas, desde que haja espaço suficiente no array pl para armazenar os dados.
+	while (i < maxPacientes && fscanf(fpAlPa, "%d;%[^;];%[^;];%[^,],%s",
+		&pl[i].id, pl[i].data, pl[i].tipoRefeicao, pl[i].calMinAd, pl[i].calMaxPer) == 5)
 	{
-		fscanf(fpAlPa, "%d;%[^;];%[^;];%s", &diet[i].id, diet[i].data, diet[i].tipoRefeicao, diet[i].cal);
-		if (feof(fpAlPa)) break;
 		i++;
-		
 	}
 	fclose(fpAlPa);
 	return i;
@@ -127,7 +142,7 @@ int importaDietaPacientes(char nomeFicheiro[], Dieta diet[], int maxPacientes)
 /// <param name="p"></param>
 /// <param name="n"></param>
 /// <returns></returns>
-bool guardaDadosPacientes(char nomeFicheiro[], Paciente p[], int n) {
+bool guardarDadosPacientes(char nomeFicheiro[], Paciente p[], int n) {
 	FILE* ficheiro = fopen(nomeFicheiro, "wb");
 
 	if (ficheiro == NULL) return false;
@@ -147,7 +162,7 @@ bool guardaDadosPacientes(char nomeFicheiro[], Paciente p[], int n) {
 /// <param name="d"></param>
 /// <param name="n"></param>
 /// <returns></returns>
-bool guardaDadosDieta(char nomeFicheiro[], Dieta d[], int n) {
+bool guardarDadosDieta(char nomeFicheiro[], Dieta d[], int n) {
 	FILE* ficheiro = fopen(nomeFicheiro, "wb");
 
 	if (ficheiro == NULL) return false;
@@ -167,7 +182,7 @@ bool guardaDadosDieta(char nomeFicheiro[], Dieta d[], int n) {
 /// <param name="pl"></param>
 /// <param name="n"></param>
 /// <returns></returns>
-bool guardaDadosPlano(char nomeFicheiro[], Plano pl[], int n) {
+bool guardarDadosPlano(char nomeFicheiro[], Plano pl[], int n) {
 	FILE* ficheiro = fopen(nomeFicheiro, "wb");
 
 	if (ficheiro == NULL) return false;
@@ -184,7 +199,6 @@ bool guardaDadosPlano(char nomeFicheiro[], Plano pl[], int n) {
 
 #pragma region Lê dados
 /// <summary>
-/// 
 /// </summary>
 /// <param name="nomeFicheiro"></param>
 /// <param name="p"></param>
@@ -206,7 +220,6 @@ int lerDadosPaciente(char nomeFicheiro[], Paciente p[]) {
 }
 
 /// <summary>
-/// 
 /// </summary>
 /// <param name="nomeFicheiro"></param>
 /// <param name="d"></param>
@@ -227,6 +240,11 @@ int lerDadosDieta(char nomeFicheiro[], Dieta d[]) {
 	return i;
 }
 
+/// <summary>
+/// </summary>
+/// <param name="nomeFicheiro"></param>
+/// <param name="pl"></param>
+/// <returns></returns>
 int lerDadosPlano(char nomeFicheiro[], Plano pl[]) {
 	FILE* ficheiro = fopen(nomeFicheiro, "rb");
 

@@ -1,0 +1,7 @@
+﻿  Main.c
+  Metodos.c
+  TratamentoDados.c
+  Gerando Código...
+C:\PI\TrabalhoPraticoPI-HHM\TrabalhoPraticoHHM\TratamentoDados.c(89,18): warning C4477: 'fscanf': a cadeia de formato '%[^;]' requer um argumento do tipo 'char *', mas um argumento variadic 2 tem o tipo 'Data'
+x64\Debug\Metodos.obj : warning LNK4042: objeto especificado mais de uma vez; extras ignorados
+  TrabalhoPraticoHHM.vcxproj -> C:\PI\TrabalhoPraticoPI-HHM\x64\Debug\TrabalhoPraticoHHM.exe

@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include <locale.h>
+#include <stdbool.h>
 
 #include "Metodos.h"
 #include "Structs.h"
@@ -21,20 +22,25 @@ int main()
 {
 	setlocale(LC_ALL, "Portuguese"); 
 
+	// Variaveis
 	Paciente p[K];
-	Alimentacao ali[K];
 	Dieta diet[K];
-
-	int qtdDadosPaciente = 0, qtdAlimentacao = 0, qtdDieta = 0;
+	Plano pl[K];
+	int qtdDadosPaciente = 0, qtdDieta = 0, qtdPlano = 0;
 	
-	qtdDadosPaciente = importaDadosPacientes("Pessoas.csv", p, K);
-	qtdAlimentacao = importaAlimentacaoPacientes("Alimentacao.csv", ali, K);
-	qtdDieta = importaDietaPacientes("Dieta.csv", diet, K);
+	qtdDadosPaciente = importarDadosPacientes("Paciente.csv", p, K);
+	qtdDieta = importarDadosDieta("Dieta.csv", diet, K);
+	qtdPlano = importarDadosPlano("Plano.csv", pl, K);
+
+	bool guardar1 = guardarDadosPacientes("Paciente.dat", p, qtdDadosPaciente);
+	bool guardar2 = guardarDadosDieta("Dieta.dat", diet, qtdDieta);
+	bool guardar3 = guardarDadosPlano("Plano.dat", pl, qtdPlano);
 
 	printf("Número de Dados de Pacientes: %d\n", qtdDadosPaciente);
 
-	printf("Número de Alimentos dos Pacientes: %d\n", qtdAlimentacao);
+	printf("Número de Dietas dos Pacientes: %d\n", qtdDieta);
 
-	printf("Número de Dietas dos Pacientes: %d\n\n", qtdDieta);
+	printf("Número de Planos dos Pacientes: %d\n\n", qtdPlano);
+
 
 }

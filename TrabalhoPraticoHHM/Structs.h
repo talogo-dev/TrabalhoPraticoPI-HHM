@@ -3,48 +3,32 @@
 *	- Hugo Especial / 27963 / a27963@aulunos.ipca.pt
 *	- Marco Cardoso / 27969 / a27969@alunos.ipca.pt
 *	- Hugo Pereira  / 27970 / a27970@alunos.ipca.pt
-* Data: 20/11/2023
-* Versão: 1.0 (Ultima vez modificado em 29/11/2023)
+* Data: 05/12/2023
+* Versão: 2.3 (Ultima vez modificado em 05/12/2023)
 */
 
 #pragma once
 #include <stdio.h>
+#include <time.h>
 
 #define N 30
 
-/*typedef struct Calorias
-{
-	char calInstante[N];
-	char calMinAd[N];
-	char calMaxPer[N];
-} Calorias;*/
+#pragma region Outras Structs
 
 /// <summary>
-///		Estrutura para guardar as Dietas
+///		Serve para guardar datas
 /// </summary>
-///
-typedef struct Dieta {
-	int id;
-	char data[N];
-	char tipoRefeicao[N];
-	char cal[N];
-}Dieta;
-
-/// <summary>
-/// Estrutura para guardar:
-///		- Tipo de Refeição (Pequeno Almoço, Almoço, Jantar)
-/// </summary>
-typedef struct Alimentacao
+typedef struct Data
 {
-	int id;
-	char data[N];
-	char tipoRefeicao[N];
-	char alimento[N];
-	char cal[N];
+	int dia;
+	int mes;
+	int ano;
+} Data;
 
-	//struct Calorias cal[N]; // Apenas para teste
-	//struct Calorias cal; 
-} Alimentacao;
+#pragma endregion
+
+
+#pragma region Relativo aos Pacientes
 
 /// <summary>
 /// Estrutura para guardar:
@@ -57,10 +41,35 @@ typedef struct Paciente
 	int id;
 	char nome[N];
 	char telefone[N];
-	char alimentacao[N];
-	//struct Alimentacao ali[N]; // Apenas para teste
-	//struct Alimentacao ali;
 } Paciente;
+
+/// <summary>
+///		Estrutura para guardar a Dieta
+/// </summary>
+typedef struct Dieta
+{
+	int id;
+	Data data;
+	char tipoRefeicao[N];
+	char alimento[N];
+	char cal[N];
+} Dieta;
+
+/// <summary>
+///		Estrutura para guardar o plano nutricional
+/// </summary>
+typedef struct Plano
+{
+	int id;
+	char data[N];
+	char tipoRefeicao[N];
+	char calMinAd[N];
+	char calMaxPer[N];
+} Plano;
+
+#pragma endregion
+
+
 
 
 

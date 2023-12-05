@@ -16,14 +16,14 @@
 int contarLinhas(FILE* fp);
 
 // Importa dados
-int importaDadosPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes);
-int importaAlimentacaoPacientes(char nomeFicheiro[], Alimentacao ali[], int maxPacientes);
-int importaDietaPacientes(char nomeFicheiro[], Dieta diet[], int maxPacientes);
+int importarDadosPacientes(char nomeFicheiro[], Paciente p[], int maxPacientes);
+int importarDadosDieta(char nomeFicheiro[], Dieta diet[], int maxPacientes);
+int importarDadosPlano(char nomeFicheiro[], Plano pl[], int maxPacientes);
 
 // Guardar dados
-bool guardaDadosPacientes(char nomeFicheiro[], Paciente p[], int n);
-bool guardaDadosDieta(char nomeFicheiro[], Dieta d[], int n);
-bool guardaDadosPlano(char nomeFicheiro[], Plano pl[], int n);
+bool guardarDadosPacientes(char nomeFicheiro[], Paciente p[], int n);
+bool guardarDadosDieta(char nomeFicheiro[], Dieta d[], int n);
+bool guardarDadosPlano(char nomeFicheiro[], Plano pl[], int n);
 
 // Lê dados
 int lerDadosPaciente(char nomeFicheiro[], Paciente p[]);
