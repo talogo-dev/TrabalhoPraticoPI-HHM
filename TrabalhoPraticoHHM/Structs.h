@@ -61,7 +61,7 @@ typedef struct Dieta
 typedef struct Plano
 {
 	int id;
-	char data[N];
+	Data data;
 	char tipoRefeicao[N];
 	char calMinAd[N];
 	char calMaxPer[N];

@@ -29,3 +29,9 @@ bool guardarDadosPlano(char nomeFicheiro[], Plano pl[], int n);
 int lerDadosPaciente(char nomeFicheiro[], Paciente p[]);
 int lerDadosDieta(char nomeFicheiro[], Dieta d[]);
 int lerDadosPlano(char nomeFicheiro[], Plano pl[]);
+
+// Alínea 2
+int pacientesUltrapassarCalorias(Dieta d[], Plano p[], int tamanhoDieta, int tamanhoPlano);
+
+// Alínea 4
+Plano listarPlanoNutricional(int pacienteId, char tipoRefeicao[], Plano p[], int tamanhoPlano, Data dataInicio, Data dataFim);

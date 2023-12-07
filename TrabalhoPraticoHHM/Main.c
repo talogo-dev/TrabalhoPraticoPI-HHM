@@ -42,5 +42,9 @@ int main()
 
 	printf("Número de Planos dos Pacientes: %d\n\n", qtdPlano);
 
+	int contador = pacientesUltrapassarCalorias(diet, pl, qtdDieta, qtdPlano);
+
+	printf("%d", contador);
+
 
 }
