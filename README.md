@@ -1,7 +1,5 @@
 # Imperative Programming Project – Nutrition Management System
 
-### EST-IPCA | LESI / LESIPL | 2023–2024
-
 This project, developed in **C**, aims to apply concepts of **imperative programming** to build a system that manages and monitors patients’ nutritional data in a diet management context.
 
 ---
