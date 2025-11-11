@@ -28,7 +28,7 @@ This project, developed in **C**, aims to apply concepts of **imperative program
 
 ---
 
-## 👨‍💻 Author(s)
+## Author(s)
 
 Developed for the **Imperative Programming (PI)** course by
 
